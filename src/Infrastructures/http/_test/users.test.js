@@ -155,7 +155,7 @@ describe('/users endpoint', () => {
   })
 
   describe('when GET /', () => {
-    it('should return 200 and hello world', async () => {
+    it('should return 200 and test CI/DI', async () => {
       // Arrange
       const server = await createServer({})
       // Action
@@ -166,7 +166,7 @@ describe('/users endpoint', () => {
       // Assert
       const responseJson = JSON.parse(response.payload)
       expect(response.statusCode).toEqual(200)
-      expect(responseJson.value).toEqual('Hello world!')
+      expect(responseJson.value).toEqual('test CI/DI')
     })
   })
 })
