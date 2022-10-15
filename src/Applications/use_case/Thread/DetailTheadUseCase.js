@@ -9,20 +9,20 @@ class DetailTheadUseCase {
   }
 
   async execute (useCasePayload) {
-    const commentThread = []
     const { thread } = useCasePayload
     await this._threadRepository.checkAvailabilityThread(thread)
     const detailThread = await this._threadRepository.getDetailThread(thread)
     const getCommentsThread = await this._commentRepository.getCommentThread(thread)
-    // for (const comment of getCommentsThread) {
-    //   const { id } = comment
-    //   const repliesData = await this._repliesRepository.getRepliesComment(id)
-    //   const repliesDat = new GetDetailReplies({ replies: repliesData }).replies
-    //   commentThread.push({
-    //     ...comment,
-    //     replies: repliesDat
-    //   })
-    // }
+
+    const commentThread = await Promise.all(await getCommentsThread.map(async (comment) => {
+      const { id } = comment
+      const replies = await this._repliesRepository.getRepliesComment(id)
+      const repliesDat = new GetDetailReplies({ replies }).replies
+      return {
+        ...comment,
+        replies: repliesDat
+      }
+    }))
     detailThread.comments = new GetDetailComment({ comments: commentThread }).comments
     return {
       thread: detailThread

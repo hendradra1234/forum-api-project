@@ -223,8 +223,8 @@ describe('RepliesRepositoryPostgres', () => {
         await ThreadsTableTestHelper.addThread(threadPayload)
         await CommentsTableTestHelper.addComment(commentPayload)
         await RepliesTableTestHelper.addReplies(replyPayload)
-
-        const replies = await repliesRepositoryPostgres.getRepliesComment(commentPayload.id)
+        const comments = commentPayload.id
+        const replies = await repliesRepositoryPostgres.getRepliesComment(comments)
 
         expect(Array.isArray(replies)).toBe(true)
         expect(replies[0].id).toEqual(replyPayload.id)
