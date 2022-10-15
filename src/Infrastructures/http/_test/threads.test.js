@@ -252,4 +252,20 @@ describe('/threads endpoint', () => {
       expect(Array.isArray(responseJson.data.thread.comments[0].replies)).toBe(true)
     })
   })
+
+  describe('when GET /', () => {
+    it('should return 200 and Dashboard-Welcome', async () => {
+      // Arrange
+      const server = await createServer({})
+      // Action
+      const response = await server.inject({
+        method: 'GET',
+        url: '/'
+      })
+      // Assert
+      const responseJson = JSON.parse(response.payload)
+      expect(response.statusCode).toEqual(200)
+      expect(responseJson.value).toEqual('Dashboard-Welcome')
+    })
+  })
 })
