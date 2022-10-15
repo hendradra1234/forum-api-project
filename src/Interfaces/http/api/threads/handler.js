@@ -47,7 +47,8 @@ class ThreadsHandler {
   async DashboardHandler (request, h) {
     const response = h.response({
       status: 'success',
-      value: 'Dashboard-Welcome'
+      value: 'Dashboard-Welcome',
+      message: 'Welcome to Forum-API'
     })
     response.code(200)
     return response

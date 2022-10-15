@@ -266,6 +266,7 @@ describe('/threads endpoint', () => {
       const responseJson = JSON.parse(response.payload)
       expect(response.statusCode).toEqual(200)
       expect(responseJson.value).toEqual('Dashboard-Welcome')
+      expect(responseJson.message).toEqual('Welcome to Forum-API')
     })
   })
 })
