@@ -11,6 +11,11 @@ const routes = (handler) => ([
     method: 'GET',
     path: '/threads/{threadId}',
     handler: handler.getDetailThreadHandler
+  },
+  {
+    method: 'GET',
+    path: '/',
+    handler: handler.DashboardHandler
   }
 ])
 

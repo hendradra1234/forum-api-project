@@ -6,6 +6,7 @@ class ThreadsHandler {
     this._container = container
     this.postThreadsHandler = this.postThreadsHandler.bind(this)
     this.getDetailThreadHandler = this.getDetailThreadHandler.bind(this)
+    this.DashboardHandler = this.DashboardHandler.bind(this)
   }
 
   async postThreadsHandler (request, h) {
@@ -38,6 +39,15 @@ class ThreadsHandler {
       data: {
         thread
       }
+    })
+    response.code(200)
+    return response
+  }
+
+  async DashboardHandler (request, h) {
+    const response = h.response({
+      status: 'success',
+      value: 'Dashboard-Welcome'
     })
     response.code(200)
     return response
