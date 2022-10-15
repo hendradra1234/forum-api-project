@@ -1,4 +1,3 @@
-/* eslint-disable camelcase */
 const table = 'users'
 exports.up = (pgm) => {
   pgm.createTable(table, {

@@ -1,5 +1,3 @@
-/* eslint-disable camelcase */
-
 const table = 'threads'
 exports.up = (pgm) => {
   pgm.createTable(table, {

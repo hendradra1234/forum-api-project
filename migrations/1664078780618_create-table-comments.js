@@ -1,5 +1,3 @@
-/* eslint-disable camelcase */
-
 const table = 'comments'
 exports.up = (pgm) => {
   pgm.createTable(table, {
